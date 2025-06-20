@@ -1,0 +1,20 @@
+{
+  "name": "woodman-logs-server",
+  "version": "1.0.0",
+  "description": "Logging server, sqlite3 database for keeping track of logs in a more organized manner",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristhoperSanchez/woodman-logs-server.git"
+  },
+  "author": "Cristhoper Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristhoperSanchez/woodman-logs-server/issues"
+  },
+  "homepage": "https://github.com/CristhoperSanchez/woodman-logs-server#readme"
+}
