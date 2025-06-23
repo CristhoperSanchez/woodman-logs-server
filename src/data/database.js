@@ -10,6 +10,13 @@ const dbPath = path.resolve(__dirname, 'pdf.db');
 
 const db = new DatabaseConstructor(dbPath);
 
+const capitalizeString = (string) => {
+    if (!string) return '';
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+  
+
+
 class DataBaseManager {
     constructor(database) {
         this.DB = database;
@@ -38,48 +45,36 @@ class DataBaseManager {
         }
     }
 
-    InsertLog(logObject){
-        /* Check Object type function */
-        try{
-             console.log("values being inserted: ", 
-                logObject?.application ,
-                logObject?.environment ,
-                logObject?.statusCode ,
-                logObject?.level ,
-                logObject?.status ,
-                logObject?.stack ,
-                logObject?.message ,
-                logObject?.timestamp 
-            );
+    InsertLog(logObject) {
+
+        console.log("Log Object being inserted: ", logObject)
+        try {
             const stmt = this.DB.prepare(`
                 INSERT INTO event_logs (
                     application, environment, statusCode, level,
                     status, stack, message, timestamp
-                )
-                `)
-
-  
-
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            `);
+    
             const result = stmt.run(
-                logObject.application ,
-                logObject.environment ,
-                logObject.statusCode ,
-                logObject.level ,
-                logObject.status ,
-                logObject.stack ,
-                logObject.message ,
-                logObject.timestamp 
-            )
-
-
+                logObject.application,
+                logObject.environment,
+                logObject.statusCode,
+                capitalizeString(logObject.level),
+                logObject.status,
+                logObject.stack,
+                logObject.message,
+                logObject.timestamp
+            );
+    
             console.log("Result: ", result);
-            return result
-        } catch( error ) {
-            console.log("Error adding record: ", error)
-            return
+            return result;
+        } catch (error) {
+            console.log("Error adding record: ", error);
+            return;
         }
     }
-
+    
 
 
 }
