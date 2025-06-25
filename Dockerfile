@@ -11,16 +11,16 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Copy only package.json first for layer caching
+# Copy package files first to optimize caching
 COPY app/package*.json ./
 
-# Install dependencies (this will build better-sqlite3 if needed)
+# Install dependencies
 RUN npm install
 
-# Copy the rest of your application
-COPY app/ .
+# Copy rest of the application source code
+COPY app/ ./
 
-# Set environment variables and port
+# Set environment variables and expose port
 ENV PORT=2323
 EXPOSE 2323
 

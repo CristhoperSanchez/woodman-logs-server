@@ -6,7 +6,10 @@ import { dirname } from 'path';
 // Resolve path to ./data/pdf.db in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const dbPath = path.resolve(__dirname, 'database.db');
+const dbPath = path.resolve(__dirname, '..', 'data' ,'database.db');
+console.log("dbPath: ", dbPath)
+
+
 
 const db = new DatabaseConstructor(dbPath);
 

@@ -1,6 +1,6 @@
 import express, { application } from 'express';
 import dotenv from 'dotenv';
-import DB from './data/database.js';
+import DB from './utils/database.js';
 
 
 dotenv.config()
@@ -36,6 +36,5 @@ APP.get('/loggingstructure', (req, res) =>{
 })
 
 APP.listen(PORT, () => {
-  console.clear();
   console.log("App Listening on Port: ", PORT)
 })
