@@ -21,6 +21,7 @@ APP.post('/logging/addlog', (req, res) =>{
 })
 
 
+
 APP.get('/loggingstructure', (req, res) =>{
   res.json({
     "application" : "text",
